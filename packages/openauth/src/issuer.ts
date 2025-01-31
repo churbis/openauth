@@ -450,6 +450,9 @@ export function issuer<
     >
   }[keyof Providers],
 >(input: IssuerInput<Providers, Subjects, Result>) {
+
+  console.log("logging issuer input", input)
+
   const error =
     input.error ??
     function (err) {

@@ -712,10 +712,13 @@ export function createClient(input: ClientInput): Client {
               properties: validated.value,
             } as any,
           }
+
+        console.log("validated issues", validated.issues)
         return {
           err: new InvalidSubjectError(),
         }
       } catch (e) {
+        console.log("error", e)
         if (e instanceof errors.JWTExpired && options?.refresh) {
           const refreshed = await this.refresh(options.refresh)
           if (refreshed.err) return refreshed
